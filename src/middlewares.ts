@@ -8,7 +8,7 @@ export const isUserIdValid = (req: Request, res: Response, next: NextFunction) =
     return next();
 }
 export const isUserEmailUnique = (req: Request, res: Response, next: NextFunction) => {
-    if(!userDatabase.some(user => user.email === req.body.email)){
+    if(userDatabase.some(user => user.email === req.body.email)){
         return res.status(401).json({ error: "You cannot register a user with the same email"});
     }
     return next();
